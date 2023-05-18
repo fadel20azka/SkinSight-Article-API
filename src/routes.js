@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const {addArticle,getArticleData} = require('../src/handler');
+const {addArticle,getArticleData, getAllArticles} = require('../src/handler');
 
 const addArticleRoute = {
     method: 'POST',
@@ -25,14 +25,33 @@ const getArticleRoute = {
         const data = await getArticleData(uid);
         if (data) {
           return h.response({imageUrl: data.imageUrl, title: data.title, description: data.description, content: data.content }).code(200);
-        } else {
+        } 
+        else {
           return h.response('Artikel tidak ditemukan').code(404);
         }
-      } catch (error) {
+      }
+        catch (error) {
         console.error('Error saat mengambil data artikel:', error);
+        return h.response('Error saat mengambil data artikel').code(500);
+      }
+    },
+};
+
+
+const getAllArticlesRoute = {
+    method: 'GET',
+    path: '/article',
+    handler: async (request, h) => {
+      try {
+        const articles = await getAllArticles();
+        return h.response(articles).code(200);
+      } catch (error) {
+        console.error('Error saat mengambil data artikel', error);
         return h.response('Error saat mengambil data artikel').code(500);
       }
     },
   };
 
-module.exports = [addArticleRoute,getArticleRoute];
+
+
+module.exports = [addArticleRoute,getArticleRoute,getAllArticlesRoute];
