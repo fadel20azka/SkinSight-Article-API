@@ -38,10 +38,10 @@ Response:
   "status": "Success",
   "message": "Mendapatkan data seluruh artikel berhasil",
   "data": {
-    "imageURL": "https://www.ekahospital.com/uploads/dr-dr--m--yaminimages-2020-05-26-094801.jpg", 
-    "title": "contoh title",
-    "description": "contoh deskripsi singkat",
-    "content": "contoh isi konten artikel xxxxx xxxxx xxxx"
+      "imageURL": "https://www.ekahospital.com/uploads/dr-dr--m--yaminimages-2020-05-26-094801.jpg", 
+      "title": "contoh title",
+      "description": "contoh deskripsi singkat",
+      "content": "contoh isi konten artikel xxxxx xxxxx xxxx"
   }
 } 
 ```
@@ -66,9 +66,9 @@ Response:
         {
             "id": "2",
             "title": "title2",
-            "description": "description3",
+            "description": "description2",
             "content": "content2",
-            "imageUrl": "imageUrl3"
+            "imageUrl": "imageUrl2"
         }
         ...........
 ```
