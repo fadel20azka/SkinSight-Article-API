@@ -8,11 +8,21 @@ const addArticleRoute = {
       const {imageUrl,title,description,content} = request.payload;
       try{
         const article = await addArticle(imageUrl,title,description,content);
-        return h.response({message:"article berhasil ditambah"}).code(201);
+        const response = h.response({
+            status: 'Success',
+            message: 'artikel berhasil ditambah',
+          }
+          );
+          response.code(200);
+          return response;
       } catch (error) {
-        console.error('Error registering user:', error);
-        return h.response({ message: error.message }).code(400);
-      }
+        const response = h.response({
+            status: 'Failed',
+            message: 'Error menambahkan artikel',
+        })
+        response.code(500);
+        return response;
+    }
     }
 }
 
@@ -21,36 +31,58 @@ const getArticleRoute = {
     path: '/article/{uid}',
     handler: async (request, h) => {
       const { uid } = request.params;
-      try {
-        const data = await getArticleData(uid);
-        if (data) {
-          return h.response({imageUrl: data.imageUrl, title: data.title, description: data.description, content: data.content }).code(200);
+        try {
+          const article = await getArticleData(uid);
+          const response = h.response({
+            status: 'Success',
+            message: 'Mendapatkan data artikel berhasil',
+            data:{
+              imageUrl: article.imageUrl,
+              title: article.title,
+              description: article.description,
+              content: article.content
+            }});
+            response.code(200);
+            return response;
         } 
-        else {
-          return h.response('Artikel tidak ditemukan').code(404);
-        }
-      }
-        catch (error) {
-        console.error('Error saat mengambil data artikel:', error);
-        return h.response('Error saat mengambil data artikel').code(500);
-      }
-    },
+      catch (error) {
+      const response = h.response({
+          status: 'Failed',
+          message: 'Error mendapatkan data artikel',
+      })
+      response.code(500);
+      return response;
+    }
+  },
 };
 
 
+
+
 const getAllArticlesRoute = {
-    method: 'GET',
-    path: '/article',
-    handler: async (request, h) => {
-      try {
-        const articles = await getAllArticles();
-        return h.response(articles).code(200);
-      } catch (error) {
-        console.error('Error saat mengambil data artikel', error);
-        return h.response('Error saat mengambil data artikel').code(500);
-      }
-    },
-  };
+  method: 'GET',
+  path: '/article',
+  handler: async (request, h) => {
+     const article = await getAllArticles();
+    try {
+      const article = await getAllArticles();
+      const response = h.response({
+        status: 'Success',
+        message: 'Mendapatkan data seluruh artikel berhasil',
+        data:article
+      });
+      response.code(200);
+      return response;
+    }  catch (error) {
+      const response = h.response({
+          status: 'Failed',
+          message: 'Error mendapatkan data seluruh artikel',
+      })
+      response.code(500);
+      return response;
+    }
+  },
+};
 
 
 

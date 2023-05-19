@@ -22,7 +22,7 @@ const getArticleData = async (uid) => {
       return null;
     } 
     catch (error) {
-      console.log('Error mendapatkan data artikel:', error);
+      console.log('Error mendapatkan data artikel', error);
       throw error;
     }
 };
@@ -40,7 +40,7 @@ const getAllArticles = async () => {
       });
       return articleList;
     } catch (error) {
-      console.log('Error getting all articles:', error);
+      console.log('Error mendapatkan seluruh artikel', error);
       throw error;
     }
   };    
