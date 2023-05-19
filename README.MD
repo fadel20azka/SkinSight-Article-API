@@ -1,4 +1,4 @@
-#ENDPOINTS
+# ENDPOINTS
 
 | Method | Endpoint           |
 | ------ | ------------------ |  
