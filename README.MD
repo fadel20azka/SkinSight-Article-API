@@ -14,7 +14,7 @@ Menambahkan artikel ke database
 Request body:
 ```json
 { 
-  "imageURL": "https://www.ekahospital.com/uploads/dr-dr--m--yaminimages-2020-05-26-094801.jpg", 
+  "imageUrl": "https://www.ekahospital.com/uploads/dr-dr--m--yaminimages-2020-05-26-094801.jpg", 
   "title": "contoh title",
   "description": "contoh deskripsi singkat",
   "content": "contoh isi konten artikel xxxxx xxxxx xxxx" 
